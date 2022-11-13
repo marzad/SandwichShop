@@ -2,9 +2,10 @@ package de.neuefische.marzad.sandwichshop.service;
 
 import de.neuefische.marzad.sandwichshop.model.SandwichModel;
 import de.neuefische.marzad.sandwichshop.repository.SandwichRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class SandwichShopService {
     private static SandwichRepository sandwichRepository;
 

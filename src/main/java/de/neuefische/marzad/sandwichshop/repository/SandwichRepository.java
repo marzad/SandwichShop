@@ -1,10 +1,11 @@
 package de.neuefische.marzad.sandwichshop.repository;
 
 import de.neuefische.marzad.sandwichshop.model.SandwichModel;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class SandwichRepository {
 
     private List<SandwichModel> sandwichModelList = new ArrayList<>();
