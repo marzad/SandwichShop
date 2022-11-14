@@ -54,6 +54,17 @@
             <artifactId>wiremock-contract-verifier</artifactId>
             <version>0.3.0</version>
         </dependency>
+<!--        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-resolver-dns-native-macos</artifactId>
+            <scope>runtime</scope>
+            <classifier>osx-x86_64</classifier>
+            <version>4.1.70.Final</version>
+        </dependency>-->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

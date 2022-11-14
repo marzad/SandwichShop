@@ -1,8 +1,8 @@
 package de.neuefische.marzad.sandwichshop.controller;
 
 import de.neuefische.marzad.sandwichshop.model.BookModel;
+import de.neuefische.marzad.sandwichshop.model.Order;
 import de.neuefische.marzad.sandwichshop.model.SandwichModel;
-import de.neuefische.marzad.sandwichshop.repository.BookRepository;
 import de.neuefische.marzad.sandwichshop.repository.SandwichRepository;
 import de.neuefische.marzad.sandwichshop.service.SandwichShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,18 +27,25 @@ public class SandwichShopController {
     }
 
     @GetMapping("{id}")
-    public SandwichModel getSandwichByID(@PathVariable String id){
-        return shopService.getSandwichByID(id);
+    public Order getSandwichByID(@PathVariable String id){
 
-        BookModel book = WebClient
+
+        BookModel[] books = WebClient
                 .builder()
                 .baseUrl("https://my-json-server.typicode.com/Flooooooooooorian/BookApi/books")
                 .build()
                 .method(HttpMethod.GET)
                 .uri("/")
                 .exchangeToMono(
-                        clientResponse -> clientResponse.bodyToMono(BookModel.class)
+                        clientResponse -> clientResponse.bodyToMono(BookModel[].class)
                 ).block();
+
+        int randomId = (int) (Math.random()*books.length -1);
+
+        Order newOrder =new Order(shopService.getSandwichByID(id), books[randomId]);
+
+        return newOrder;
+
     }
 
     @PostMapping
